@@ -1,4 +1,4 @@
-# 📖 Choose Your Own Adventure
+# 📖 Choose Your Own Adventure Game
 
 A choose-your-own-adventure story game built with [Streamlit](https://streamlit.io/). Navigate branching story paths, make choices, and discover multiple endings, using an interactive web app.
 
