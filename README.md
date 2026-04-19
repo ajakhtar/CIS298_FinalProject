@@ -42,3 +42,4 @@ streamlit run app.py
 | Commit | Date | Member   | Hours | What was done                                                      |
 |--------|------|----------|-------|--------------------------------------------------------------------|
 | 1 | 2026-04-18 | Abdullah | 2.5 | Set up Streamlit app skeleton, created folder structure and README |
+| 2 | 2026-04-19 | Mohamed Alhmood | 3.0 | Designed StoryNode data structure, implemented JSON-to-object loader, and integrated dynamic story traversal with Streamlit session state |

@@ -1,0 +1,25 @@
+
+{
+  "start": {
+    "title": "Start",
+    "text": "You see two doors.",
+    "choices": [
+      { "text": "Go left", "next": "left" },
+      { "text": "Go right", "next": "right" }
+    ]
+  },
+
+  "left": {
+    "title": "Left Room",
+    "text": "You found treasure!",
+    "ending": true,
+    "ending_type": "good"
+  },
+
+  "right": {
+    "title": "Right Room",
+    "text": "A monster got you.",
+    "ending": true,
+    "ending_type": "bad"
+  }
+}
