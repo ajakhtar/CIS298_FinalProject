@@ -1,25 +1,44 @@
 
 {
   "start": {
-    "title": "Start",
-    "text": "You see two doors.",
-    "choices": [
-      { "text": "Go left", "next": "left" },
-      { "text": "Go right", "next": "right" }
+    "title": "No Reservations: The Afterlife Tour",
+    "text": "Chef Anthony appears in the quiet glow of the city night. With me, every meal tells a story. Let's travel the world, taste incredible food, and discover the cultures behind every table. Where would you like to go first?",
+
+
+  "choices": [
+     { "text": "Istanbul, Turkey", "next": "istanbul" },
+      { "text": "Tokyo, Japan", "next": "tokyo" },
+      { "text": "New Orleans, USA", "next": "new_orleans" },
+      { "text": "Mexico City, Mexico", "next": "mexico_city" }
     ]
   },
 
-  "left": {
-    "title": "Left Room",
-    "text": "You found treasure!",
+
+  "istanbul": {
+    "title": "Istanbul, Turkey",
+    "text": "The scent of grilled fish, warm bread, and strong tea drifts through the air as Chef Anthony leads you through the city's glowing streets.",
     "ending": true,
     "ending_type": "good"
   },
 
-  "right": {
-    "title": "Right Room",
-    "text": "A monster got you.",
+  "tokyo": {
+    "title": "Tokyo, Japan",
+    "text": "Neon lights reflect off rain-slick streets as you follow Chef Anthony into a narrow ramen alley hidden behind the crowds.",
     "ending": true,
-    "ending_type": "bad"
+    "ending_type": "good"
+  },
+
+  "new_orleans": {
+    "title": "New Orleans, USA",
+    "text": "Jazz spills into the street while the smell of gumbo, fried catfish, and powdered sugar pulls you deeper into the French Quarter.",
+    "ending": true,
+    "ending_type": "good"
+  },
+
+  "mexico_city": {
+    "title": "Mexico City, Mexico",
+    "text": "The city hums around you as tacos sizzle on the grill and Chef Anthony smiles, telling you the best meals are often found standing up on a busy corner.",
+    "ending": true,
+    "ending_type": "good"
   }
 }

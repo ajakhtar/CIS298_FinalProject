@@ -2,6 +2,16 @@ import streamlit as st
 import json
 import os
 
+
+
+
+st.set_page_config(
+    page_title="Choose Your Own Adventure",
+    page_icon="📖",
+    layout="centered"
+)
+
+
 class StoryNode:
     def __init__(self, node_id, data):
         self.id = node_id
@@ -32,14 +42,10 @@ if "current_node_id" not in st.session_state:
 
 current_node = story_data[st.session_state.current_node_id]
 
-st.set_page_config(
-    page_title="Choose Your Own Adventure",
-    page_icon="📖",
-    layout="centered"
-)
-
-st.title("📖 Choose Your Own Adventure")
-st.write("Welcome! Your story is about to begin...")
+if st.session_state.current_node_id == "start":
+    st.image("tonyy.png", use_container_width=True)
+st.title("🍷 No Reservations: The Afterlife Tour")
+st.write("The city sleeps. Somewhere, one final table is waiting...")
 
 st.subheader(current_node.title)
 st.write(current_node.text)
@@ -47,7 +53,11 @@ st.write(current_node.text)
 if current_node.image:
     image_path = os.path.join("assets/images", current_node.image)
     st.image(image_path)
-
+ #tokyo
+if st.session_state.current_node_id == "tokyo":
+        st.video("tokyovideo.mp4")
+if st.session_state.current_node_id == "new_orleans":
+    st.audio("jazz.m4a")
 if current_node.ending:
     st.success("The End")
 
