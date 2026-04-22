@@ -16,16 +16,128 @@
 
   "istanbul": {
     "title": "Istanbul, Turkey",
-    "text": "The scent of grilled fish, warm bread, and strong tea drifts through the air as Chef Anthony leads you through the city's glowing streets.",
+    "text": "The scent of grilled fish, warm bread, and strong tea drifts through the air as Chef Anthony leads you through the city's glowing streets. \"A city split between continents learns how to hold contradictions,\" he says.",
+    "choices": [
+      { "text": "Follow him to the spice market", "next": "istanbul_market" },
+      { "text": "Take the ferry across the Bosphorus", "next": "istanbul_ferry" },
+      { "text": "Sit down for tea and conversation", "next": "istanbul_tea" }
+    ]
+  },
+
+  "istanbul_market": {
+    "title": "The Spice Market",
+    "text": "Colors spill from every stall. Saffron, sumac, mint, and dried fruit crowd the air with sweetness and heat. Anthony smiles. \"A market teaches you what a city values.\"",
+    "choices": [
+      { "text": "Taste street simit from a nearby cart", "next": "istanbul_simit" },
+      { "text": "Ask a vendor about the strongest spice", "next": "istanbul_vendor" }
+    ]
+  },
+
+  "istanbul_ferry": {
+    "title": "Across the Water",
+    "text": "The ferry cuts across dark water as gulls circle overhead. Anthony leans against the rail. \"Some meals stay with you because of the food. Others stay because of where you were standing when life felt bigger.\"",
+    "ending": true,
+    "ending_type": "good"
+  },
+
+  "istanbul_tea": {
+    "title": "Tea by the Window",
+    "text": "You sit in a quiet café while tea glasses glow amber under the light. Anthony watches the room. \"The best places never rush you. They let the city come to you.\"",
+    "choices": [
+      { "text": "Ask him what makes a meal unforgettable", "next": "istanbul_meal" },
+      { "text": "Stay silent and listen to the room", "next": "istanbul_listen" }
+    ]
+  },
+
+  "istanbul_simit": {
+    "title": "Bread and Morning Air",
+    "text": "You tear into warm simit while the street wakes around you. It is simple and perfect. Anthony laughs. \"Anyone can chase luxury. It takes taste to respect something humble.\"",
+    "ending": true,
+    "ending_type": "good"
+  },
+
+  "istanbul_vendor": {
+    "title": "Too Much of a Good Thing",
+    "text": "The vendor hands you a pepper so intense your eyes water instantly. Anthony tries not to laugh, but fails. \"Curiosity is good,\" he says, \"but arrogance has a flavor too.\"",
+    "ending": true,
+    "ending_type": "bad"
+  },
+
+  "istanbul_meal": {
+    "title": "A Table Worth Remembering",
+    "text": "\"It has to tell the truth,\" Anthony says. \"About the place. About the people. About whoever cooked it.\" Outside, the call to prayer rolls through the city like another heartbeat.",
+    "ending": true,
+    "ending_type": "good"
+  },
+
+  "istanbul_listen": {
+    "title": "The City Speaks for Itself",
+    "text": "Spoons tap glass. Chairs scrape softly. Someone laughs near the counter. For a while, nobody says anything. Somehow it feels like the right ending.",
     "ending": true,
     "ending_type": "good"
   },
 
   "tokyo": {
     "title": "Tokyo, Japan",
-    "text": "Neon lights reflect off rain-slick streets as you follow Chef Anthony into a narrow ramen alley hidden behind the crowds.",
+    "text": "Neon lights reflect off rain-slick streets as you follow Chef Anthony into a narrow ramen alley hidden behind the crowds. \"Tokyo rewards attention,\" he says. \"Blink and you'll miss the whole point.\"",
+    "choices": [
+      { "text": "Enter the tiny ramen shop", "next": "tokyo_ramen" },
+      { "text": "Walk into a late-night convenience store", "next": "tokyo_konbini" },
+      { "text": "Follow him into a hidden sushi bar", "next": "tokyo_sushi" }
+    ]
+  },
+
+  "tokyo_ramen": {
+    "title": "Steam and Silence",
+    "text": "You duck into a ramen shop with only seven seats. Nobody talks much. The broth is rich, deep, and almost impossible to describe. Anthony nods. \"Some places don't need to impress you. They already know who they are.\"",
     "ending": true,
     "ending_type": "good"
+  },
+
+  "tokyo_konbini": {
+    "title": "Bright Lights, Small Wonders",
+    "text": "Inside the convenience store, everything is neat, quick, and strangely comforting. Anthony picks up a packaged sandwich and grins. \"Never underestimate a culture that takes even convenience seriously.\"",
+    "choices": [
+      { "text": "Try the egg sandwich", "next": "tokyo_egg" },
+      { "text": "Grab a strange mystery snack", "next": "tokyo_snack" }
+    ]
+  },
+
+  "tokyo_sushi": {
+    "title": "Twelve Seats, No Menu",
+    "text": "The sushi bar is quiet except for the sound of knives and soft greetings. You sit down and let the chef decide your meal. Anthony smiles. \"Trust is part of the experience.\"",
+    "choices": [
+      { "text": "Trust the chef completely", "next": "tokyo_trust" },
+      { "text": "Ask too many questions about every bite", "next": "tokyo_questions" }
+    ]
+  },
+
+  "tokyo_egg": {
+    "title": "Unexpected Excellence",
+    "text": "It should not be this good, but somehow it is. Anthony laughs under his breath. \"That's the trap. Once you notice care, you start expecting it everywhere.\"",
+    "ending": true,
+    "ending_type": "good"
+  },
+
+  "tokyo_snack": {
+    "title": "A Risky Choice",
+    "text": "The packaging is adorable. The flavor is not. Anthony watches your expression collapse and just says, \"Now you know.\"",
+    "ending": true,
+    "ending_type": "bad"
+  },
+
+  "tokyo_trust": {
+    "title": "The Best Seat in the City",
+    "text": "Piece after piece arrives with perfect timing. No music, no spectacle, no wasted motion. Anthony looks almost peaceful. \"The world gets loud,\" he says. \"Skill like this doesn't have to.\"",
+    "ending": true,
+    "ending_type": "good"
+  },
+
+  "tokyo_questions": {
+    "title": "You Broke the Spell",
+    "text": "The chef stays polite, but the room changes. Anthony gives you a look that says you talked your way out of something beautiful.",
+    "ending": true,
+    "ending_type": "bad"
   },
 
   "new_orleans": {
@@ -57,8 +169,64 @@
 },
   "mexico_city": {
     "title": "Mexico City, Mexico",
-    "text": "The city hums around you as tacos sizzle on the grill and Chef Anthony smiles, telling you the best meals are often found standing up on a busy corner.",
+    "text": "The city hums around you as tacos sizzle on the grill and Chef Anthony smiles, telling you the best meals are often found standing up on a busy corner. \"A city this alive doesn't introduce itself slowly,\" he says.",
+    "choices": [
+      { "text": "Follow the smell of tacos al pastor", "next": "mexico_tacos" },
+      { "text": "Walk into a crowded market", "next": "mexico_market" },
+      { "text": "Sit down for late-night churros and chocolate", "next": "mexico_churros" }
+    ]
+  },
+
+  "mexico_tacos": {
+    "title": "The Spinning Trompo",
+    "text": "The cook slices pork from the trompo with fast, careful movements. Pineapple drops perfectly onto the tortilla. Anthony grins. \"Some of the greatest meals on earth are eaten standing up with grease on your hands.\"",
+    "choices": [
+      { "text": "Take the extra hot salsa", "next": "mexico_salsa" },
+      { "text": "Keep it simple and enjoy the balance", "next": "mexico_balance" }
+    ]
+  },
+
+  "mexico_market": {
+    "title": "Rows of Color",
+    "text": "Fruit, flowers, chilies, and music seem to collide all at once. Anthony moves slowly, taking it in. \"A market is a city's memory,\" he says. \"Everything important eventually passes through one.\"",
     "ending": true,
     "ending_type": "good"
+  },
+
+  "mexico_churros": {
+    "title": "Sugar at Midnight",
+    "text": "The chocolate is thick, the churros are still hot, and the whole table goes quiet for a second. Anthony nods. \"Dessert isn't an afterthought in a city that knows how to live.\"",
+    "choices": [
+      { "text": "Ask him what travel is really for", "next": "mexico_travel" },
+      { "text": "Order one more plate even though you're full", "next": "mexico_full" }
+    ]
+  },
+
+  "mexico_salsa": {
+    "title": "Respect the Heat",
+    "text": "You try to act unfazed, but the salsa hits like fire. Anthony laughs immediately. \"Confidence is cheap. Taste has to be earned.\"",
+    "ending": true,
+    "ending_type": "bad"
+  },
+
+  "mexico_balance": {
+    "title": "The Perfect Bite",
+    "text": "The sweetness, smoke, salt, and acid all land together at once. For a second, the street disappears around you. Anthony just points at the taco and says, \"That's it. That's why we go.\"",
+    "ending": true,
+    "ending_type": "good"
+  },
+
+  "mexico_travel": {
+    "title": "A Better Kind of Hunger",
+    "text": "\"Not to collect places,\" Anthony says. \"To let them change you a little.\" The city keeps moving around you while the thought stays still.",
+    "ending": true,
+    "ending_type": "good"
+  },
+
+  "mexico_full": {
+    "title": "One Plate Too Many",
+    "text": "The second plate seemed like a good idea five minutes ago. Now even Anthony looks concerned. \"A good traveler knows when the meal is over,\" he says.",
+    "ending": true,
+    "ending_type": "bad"
   }
 }

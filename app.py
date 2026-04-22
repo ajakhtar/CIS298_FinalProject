@@ -44,6 +44,8 @@ if "current_node_id" not in st.session_state:
 if "selected_destination" not in st.session_state:
     st.session_state.selected_destination = None
 
+if "allergy" not in st.session_state:
+    st.session_state.allergy = None
 # Title screen
 # Title screen
 if not st.session_state.started:
@@ -57,7 +59,31 @@ if not st.session_state.started:
     start_node = story_data["start"]
     st.subheader(start_node.title)
     st.write(start_node.text)
+    
+    st.divider()
+    st.write("### Before we begin...")
+    st.write("Any allergies the chef should be aware of?")
 
+    allergy_options = [
+        "No allergies",
+        "Seafood allergy",
+        "Nut allergy",
+        "Dairy allergy",
+        "Gluten allergy"
+    ]
+
+    selected_allergy = st.radio(
+        "Select one option:",
+        allergy_options,
+        index=0
+    )
+
+    st.session_state.allergy = selected_allergy
+
+    if st.session_state.allergy != "No allergies":
+        st.info(f"Noted: {st.session_state.allergy}")
+
+    st.divider()
     # Plane positions on the map
     plane_positions = {
         "istanbul": ("61%", "36%"),
@@ -140,7 +166,8 @@ else:
     st.title("🍷 No Reservations: The Afterlife Tour")
     st.subheader(current_node.title)
     st.write(current_node.text)
-
+    if st.session_state.allergy and st.session_state.allergy != "No allergies":
+        st.caption(f"Chef note: {st.session_state.allergy}")
     if current_node.image:
         image_path = os.path.join("assets/images", current_node.image)
         if os.path.exists(image_path):
@@ -168,6 +195,7 @@ else:
             st.session_state.current_node_id = "start"
             st.session_state.started = False
             st.session_state.selected_destination = None
+            st.session_state.allergy = None
             st.rerun()
     else:
         for choice in current_node.choices:
