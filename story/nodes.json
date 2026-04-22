@@ -30,11 +30,31 @@
 
   "new_orleans": {
     "title": "New Orleans, USA",
-    "text": "Jazz spills into the street while the smell of gumbo, fried catfish, and powdered sugar pulls you deeper into the French Quarter.",
-    "ending": true,
-    "ending_type": "good"
-  },
-
+    "text": "Warm night air wraps around you as jazz spills through the streets. The smell of spice, butter, and sugar hangs in the air. Chef Anthony smiles. 'Some cities survive by becoming unforgettable. New Orleans is one of them.'",
+  "choices": [
+    { "text": "Follow the scent of gumbo", "next": "nola_gumbo" },
+    { "text": "Follow the trumpet into a jazz club", "next": "nola_jazz" },
+    { "text": "Ask why this city matters so much", "next": "nola_talk" }
+  ]
+},
+   "nola_gumbo": {
+  "title": "The Gumbo Pot",
+  "text": "A woman stirs a massive pot with practiced patience. Chef Anthony leans close. 'Good food takes time. So do people worth knowing.'",
+  "ending": true,
+  "ending_type": "good"
+},
+  "nola_jazz": {
+  "title": "After Midnight",
+  "text": "Inside a crowded club, strangers dance like old friends. Chef Anthony laughs. 'Some people wait for permission to feel alive. Never do that.'",
+  "ending": true,
+  "ending_type": "good"
+},
+  "nola_talk": {
+  "title": "Street Corner Wisdom",
+  "text": "He watches the street quietly. 'Because this place knows grief,' he says. 'And it still chose music.'",
+  "ending": true,
+  "ending_type": "good"
+},
   "mexico_city": {
     "title": "Mexico City, Mexico",
     "text": "The city hums around you as tacos sizzle on the grill and Chef Anthony smiles, telling you the best meals are often found standing up on a busy corner.",
