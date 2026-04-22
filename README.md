@@ -44,3 +44,5 @@ streamlit run app.py
 | 1 | 2026-04-18 | Abdullah | 2.5 | Set up Streamlit app skeleton, created folder structure and README |
 | 2 | 2026-04-19 | Mohamed Alhmood | 3.0 | Designed StoryNode data structure, implemented JSON-to-object loader, and integrated dynamic story traversal with Streamlit session state |
 | 3 | 2026-04-21 | Vanessa Clark | 2.5 | Beginning draft of story, added destinations and video audio content |
+| 4 | 2026-04-21 | Abdullah | 4.0 | Added title screen with started flag, guarded media files with os.path.exists, improved ending messages, Play Again resets to title screen |
+ 
