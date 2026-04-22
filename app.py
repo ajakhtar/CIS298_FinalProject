@@ -29,9 +29,11 @@ def load_story():
         nodes[node_id] = StoryNode(node_id, data)
     return nodes
 
+
 def get_base64_file(file_path):
     with open(file_path, "rb") as f:
         return base64.b64encode(f.read()).decode()
+
 
 story_data = load_story()
 
@@ -46,7 +48,19 @@ if "selected_destination" not in st.session_state:
 
 if "allergy" not in st.session_state:
     st.session_state.allergy = None
-# Title screen
+
+if "history" not in st.session_state:
+    st.session_state.history = []
+
+
+# Sidebar — journey history (only shown during game)
+if st.session_state.started and st.session_state.history:
+    with st.sidebar:
+        st.markdown("### 🗺️ Your Journey")
+        for i, stop in enumerate(st.session_state.history):
+            st.markdown(f"{i + 1}. {stop}")
+
+
 # Title screen
 if not st.session_state.started:
     if os.path.exists("tonyy.png"):
@@ -55,11 +69,10 @@ if not st.session_state.started:
     st.title("🍷 No Reservations: The Afterlife Tour")
     st.write("The city sleeps. Somewhere, one final table is waiting...")
 
-    # If your start node exists in JSON, show its text too
     start_node = story_data["start"]
     st.subheader(start_node.title)
     st.write(start_node.text)
-    
+
     st.divider()
     st.write("### Before we begin...")
     st.write("Any allergies the chef should be aware of?")
@@ -72,19 +85,14 @@ if not st.session_state.started:
         "Gluten allergy"
     ]
 
-    selected_allergy = st.radio(
-        "Select one option:",
-        allergy_options,
-        index=0
-    )
-
+    selected_allergy = st.radio("Select one option:", allergy_options, index=0)
     st.session_state.allergy = selected_allergy
 
     if st.session_state.allergy != "No allergies":
         st.info(f"Noted: {st.session_state.allergy}")
 
     st.divider()
-    # Plane positions on the map
+
     plane_positions = {
         "istanbul": ("61%", "36%"),
         "tokyo": ("84%", "41%"),
@@ -92,17 +100,14 @@ if not st.session_state.started:
         "mexico_city": ("17%", "50%")
     }
 
-    # Default plane position
     plane_left = "50%"
     plane_top = "50%"
 
     if st.session_state.selected_destination in plane_positions:
         plane_left, plane_top = plane_positions[st.session_state.selected_destination]
 
-    # Show map if it exists
     if os.path.exists("worldmap.png"):
         map_base64 = get_base64_file("worldmap.png")
-
         st.markdown(
             f"""
             <div style="position: relative; width: 100%; max-width: 1000px; margin: auto;">
@@ -159,15 +164,22 @@ if not st.session_state.started:
         else:
             st.session_state.started = True
             st.rerun()
+
 # Game screen
 else:
     current_node = story_data[st.session_state.current_node_id]
 
+    # Add current node to history if not already the last entry
+    if not st.session_state.history or st.session_state.history[-1] != current_node.title:
+        st.session_state.history.append(current_node.title)
+
     st.title("🍷 No Reservations: The Afterlife Tour")
     st.subheader(current_node.title)
     st.write(current_node.text)
+
     if st.session_state.allergy and st.session_state.allergy != "No allergies":
         st.caption(f"Chef note: {st.session_state.allergy}")
+
     if current_node.image:
         image_path = os.path.join("assets/images", current_node.image)
         if os.path.exists(image_path):
@@ -191,14 +203,19 @@ else:
         else:
             st.info("The End.")
 
+        stops = len(st.session_state.history)
+        st.markdown(f"**You made {stops} stop{'s' if stops != 1 else ''} on this journey.**")
+
         if st.button("Take Another Trip"):
             st.session_state.current_node_id = "start"
             st.session_state.started = False
             st.session_state.selected_destination = None
             st.session_state.allergy = None
+            st.session_state.history = []
             st.rerun()
     else:
         for choice in current_node.choices:
             if st.button(choice["text"]):
+                st.toast(f"'{choice['text']}'", icon="🍴")
                 st.session_state.current_node_id = choice["next"]
                 st.rerun()

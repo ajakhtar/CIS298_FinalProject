@@ -47,3 +47,5 @@ streamlit run app.py
 | 4 | 2026-04-21 | Abdullah | 4.0 | Added title screen with started flag, guarded media files with os.path.exists, improved ending messages, Play Again resets to title screen |
 | 5 | 2026-04-22 | Vanessa | 3.0 | Implemented world map feature and corrected image rendering |
 6 | 2026-04-22 | Mohamed Alhmood | 3.0 | Expanded nodes.json with additional story branches, deeper paths, and multiple endings
+| 7 | 2026-04-22 | Abdullah | 2.5 | Added journey history sidebar, st.toast() on choices, stop counter on ending screen, history reset on Take Another Trip |
+ 
