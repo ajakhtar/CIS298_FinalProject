@@ -49,4 +49,6 @@ streamlit run app.py
 | 6 | 2026-04-22 | Mohamed Alhmood | 3.0 | Expanded nodes.json with additional story branches, deeper paths, and multiple endings
 | 7 | 2026-04-22 | Abdullah | 2.5 | Added journey history sidebar, st.toast() on choices, stop counter on ending screen, history reset on Take Another Trip |
 | 8 | 2026-04-25 | Vanessa | 6 | Added Istanbul/Mexico videos and preserved playback during navigation |
- 
+| Commit | Date       | Member            | Hours | What was done |
+|--------|------------|-------------------|-------|------------------------------|
+| 9      | 2026-04-25 | Mohamed Alhmood   | 3.5   | Enhanced UI with custom CSS, removed Streamlit header, added card-style layout, improved button styling, and added progress tracking |

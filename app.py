@@ -8,7 +8,72 @@ st.set_page_config(
     page_icon="🍷",
     layout="centered"
 )
+st.markdown("""
+<style>
 
+/* Hide top bar */
+header {visibility: hidden;}
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+
+/* Remove extra spacing */
+.block-container {
+    padding-top: 1rem;
+}
+
+</style>
+""", unsafe_allow_html=True)
+st.markdown("""
+<style>
+.stApp {
+    background: linear-gradient(135deg, #120b08, #2b1810, #0f0f0f);
+    color: #f7e7c6;
+}
+
+.block-container {
+    padding-top: 2rem;
+    max-width: 900px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #f4c76b;
+}
+
+p, label, .stMarkdown {
+    font-size: 18px;
+}
+
+div.stButton > button {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid #f4c76b;
+    background-color: #2b1810;
+    color: #f7e7c6;
+    padding: 0.75rem;
+    font-size: 17px;
+    transition: 0.2s;
+}
+
+div.stButton > button:hover {
+    background-color: #f4c76b;
+    color: #120b08;
+    transform: scale(1.02);
+}
+
+[data-testid="stSidebar"] {
+    background-color: #1a100c;
+}
+
+img {
+    border-radius: 18px;
+}
+
+hr {
+    border-color: #f4c76b;
+}
+</style>
+""", unsafe_allow_html=True)
 
 class StoryNode:
     def __init__(self, node_id, data):
@@ -66,9 +131,19 @@ if not st.session_state.started:
     if os.path.exists("assets/tonyy.png"):
         st.image("assets/tonyy.png", use_container_width=True)
 
-    st.title("🍷 No Reservations: The Afterlife Tour")
-    st.write("The city sleeps. Somewhere, one final table is waiting...")
-
+    st.markdown("""
+<div style="
+    background: rgba(0,0,0,0.45);
+    padding: 28px;
+    border-radius: 22px;
+    border: 1px solid #f4c76b;
+    text-align: center;
+    margin-bottom: 20px;
+">
+    <h1>🍷 No Reservations: The Afterlife Tour</h1>
+    <p>The city sleeps. Somewhere, one final table is waiting...</p>
+</div>
+""", unsafe_allow_html=True)
     start_node = story_data["start"]
     st.subheader(start_node.title)
     st.write(start_node.text)
@@ -174,8 +249,18 @@ else:
         st.session_state.history.append(current_node.title)
 
     st.title("🍷 No Reservations: The Afterlife Tour")
-    st.subheader(current_node.title)
-    st.write(current_node.text)
+    st.markdown(f"""
+<div style="
+    background: rgba(0,0,0,0.5);
+    padding: 24px;
+    border-radius: 18px;
+    border: 1px solid #f4c76b;
+    margin-bottom: 20px;
+">
+    <h2>{current_node.title}</h2>
+    <p>{current_node.text}</p>
+</div>
+""", unsafe_allow_html=True)
 
     if st.session_state.allergy and st.session_state.allergy != "No allergies":
         st.caption(f"Chef note: {st.session_state.allergy}")
