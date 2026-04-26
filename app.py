@@ -19,6 +19,8 @@ class StoryNode:
         self.ending = data.get("ending", False)
         self.ending_type = data.get("ending_type", None)
         self.image = data.get("image", None)
+        self.allergens = data.get("allergens", [])
+        self.allergy_comments = data.get("allergy_comments", {})
 
 
 def load_story():
@@ -35,6 +37,18 @@ def get_base64_file(file_path):
         return base64.b64encode(f.read()).decode()
 
 
+def is_risky_for(node, allergies):
+    return any(a in node.allergens for a in allergies)
+
+
+def get_anthony_comment(node, allergies):
+    for allergy in allergies:
+        comment = node.allergy_comments.get(allergy)
+        if comment:
+            return comment
+    return None
+
+
 story_data = load_story()
 
 if "started" not in st.session_state:
@@ -46,8 +60,8 @@ if "current_node_id" not in st.session_state:
 if "selected_destination" not in st.session_state:
     st.session_state.selected_destination = None
 
-if "allergy" not in st.session_state:
-    st.session_state.allergy = None
+if "allergies" not in st.session_state:
+    st.session_state.allergies = []
 
 if "history" not in st.session_state:
     st.session_state.history = []
@@ -77,31 +91,26 @@ if not st.session_state.started:
     st.write("### Before we begin...")
     st.write("Any allergies the chef should be aware of?")
 
-    allergy_options = [
-        "No allergies",
-        "Seafood allergy",
-        "Nut allergy",
-        "Dairy allergy",
-        "Gluten allergy"
-    ]
+    selected_allergies = st.multiselect(
+        "Select all that apply:",
+        ["Seafood", "Nuts", "Dairy", "Gluten"]
+    )
+    st.session_state.allergies = selected_allergies
 
-    selected_allergy = st.radio("Select one option:", allergy_options, index=0)
-    st.session_state.allergy = selected_allergy
-
-    if st.session_state.allergy != "No allergies":
-        st.info(f"Noted: {st.session_state.allergy}")
+    if selected_allergies:
+        st.info(f"Noted: {', '.join(selected_allergies)}")
 
     st.divider()
 
     plane_positions = {
-        "istanbul": ("61%", "36%"),
-        "tokyo": ("84%", "41%"),
+        "istanbul":    ("61%", "36%"),
+        "tokyo":       ("84%", "41%"),
         "new_orleans": ("23%", "42%"),
         "mexico_city": ("17%", "50%")
     }
 
     plane_left = "50%"
-    plane_top = "50%"
+    plane_top  = "50%"
 
     if st.session_state.selected_destination in plane_positions:
         plane_left, plane_top = plane_positions[st.session_state.selected_destination]
@@ -169,6 +178,7 @@ if not st.session_state.started:
 # GAME SCREEN
 else:
     current_node = story_data[st.session_state.current_node_id]
+    allergies = st.session_state.allergies
 
     if not st.session_state.history or st.session_state.history[-1] != current_node.title:
         st.session_state.history.append(current_node.title)
@@ -177,8 +187,9 @@ else:
     st.subheader(current_node.title)
     st.write(current_node.text)
 
-    if st.session_state.allergy and st.session_state.allergy != "No allergies":
-        st.caption(f"Chef note: {st.session_state.allergy}")
+    comment = get_anthony_comment(current_node, allergies)
+    if comment:
+        st.caption(f"🗣️ {comment}")
 
     if current_node.image:
         image_path = os.path.join("assets", current_node.image)
@@ -216,12 +227,16 @@ else:
             st.session_state.current_node_id = "start"
             st.session_state.started = False
             st.session_state.selected_destination = None
-            st.session_state.allergy = None
+            st.session_state.allergies = []
             st.session_state.history = []
             st.rerun()
     else:
         for choice in current_node.choices:
-            if st.button(choice["text"]):
+            next_node = story_data[choice["next"]]
+            label = choice["text"]
+            if is_risky_for(next_node, allergies):
+                label += " ⚠️"
+            if st.button(label):
                 st.toast(f"'{choice['text']}'", icon="🍴")
                 st.session_state.current_node_id = choice["next"]
                 st.rerun()
