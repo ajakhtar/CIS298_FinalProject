@@ -51,5 +51,4 @@ streamlit run app.py
 | 8      | 2026-04-25 | Vanessa | 6 | Added Istanbul/Mexico videos and preserved playback during navigation                                                                      |
  | 9      | 2026-04-25 | Abdullah | 3.0 | Tweaked allergy system. ⚠️ warning on risky choice buttons, Anthony comments appear on relevant nodes                                      |
 | Commit | Date       | Member            | Hours | What was done |
-|--------|------------|-------------------|-------|------------------------------|
 | 10     | 2026-04-25 | Mohamed Alhmood   | 3.5   | Enhanced UI with custom CSS, removed Streamlit header, added card-style layout, & improved button styling |
