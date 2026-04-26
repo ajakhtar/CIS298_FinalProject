@@ -37,6 +37,29 @@ def get_base64_file(file_path):
         return base64.b64encode(f.read()).decode()
 
 
+def set_background(image_path, position="center center"):
+    with open(image_path, "rb") as f:
+        img_base64 = base64.b64encode(f.read()).decode()
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/jpg;base64,{img_base64}");
+            background-size: cover;
+            background-position: {position};
+            background-attachment: fixed;
+        }}
+        .block-container {{
+            background-color: rgba(50, 50, 50, 0.6);
+            border-radius: 12px;
+            padding: 2rem 3rem;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
 def is_risky_for(node, allergies):
     return any(a in node.allergens for a in allergies)
 
@@ -179,6 +202,18 @@ if not st.session_state.started:
 else:
     current_node = story_data[st.session_state.current_node_id]
     allergies = st.session_state.allergies
+
+    backgrounds = {
+        "istanbul":    ("assets/istanbul_main_background.jpg",    "62% 15%"),
+        "tokyo":       ("assets/tokyo_main_background.jpg",       "center center"),
+        "new_orleans": ("assets/new_orleans_main_background.jpg", "center 30%"),
+        "mexico_city": ("assets/mexico_city_main_background.jpg", "center center"),
+    }
+    node_id = st.session_state.current_node_id
+    if node_id in backgrounds:
+        path, position = backgrounds[node_id]
+        if os.path.exists(path):
+            set_background(path, position)
 
     if not st.session_state.history or st.session_state.history[-1] != current_node.title:
         st.session_state.history.append(current_node.title)
