@@ -163,8 +163,8 @@ if st.session_state.started and st.session_state.history:
 
 # TITLE SCREEN
 if not st.session_state.started:
-    if os.path.exists("tonyy.png"):
-        st.image("tonyy.png", use_container_width=True)
+    if os.path.exists("assets/tonyy.png"):
+        st.image("assets/tonyy.png", use_container_width=True)
 
     st.title("🍷 No Reservations: The Afterlife Tour")
     st.write("The city sleeps. Somewhere, one final table is waiting...")
@@ -206,8 +206,8 @@ if not st.session_state.started:
     if st.session_state.selected_destination in plane_positions:
         plane_left, plane_top = plane_positions[st.session_state.selected_destination]
 
-    if os.path.exists("worldmap.png"):
-        map_base64 = get_base64_file("worldmap.png")
+    if os.path.exists("assets/worldmap.png"):
+        map_base64 = get_base64_file("assets/worldmap.png")
         st.markdown(
             f"""
             <div style="position: relative; width: 100%; max-width: 1000px; margin: auto;">
@@ -283,21 +283,21 @@ else:
         st.caption(f"Chef note: {st.session_state.allergy}")
 
     if current_node.image:
-        image_path = os.path.join("assets/images", current_node.image)
+        image_path = os.path.join("assets", current_node.image)
         if os.path.exists(image_path):
             st.image(image_path)
 
-    if st.session_state.current_node_id == "tokyo" and os.path.exists("tokyovideo.mp4"):
-        st.video("tokyovideo.mp4")
+    if st.session_state.current_node_id == "tokyo" and os.path.exists("assets/tokyovideo.mp4"):
+        st.video("assets/tokyovideo.mp4")
 
-    if st.session_state.current_node_id == "mexico_city" and os.path.exists("mexico.mp4"):
-        st.video("mexico.mp4")
+    if st.session_state.current_node_id == "mexico_city" and os.path.exists("assets/mexico.mp4"):
+        st.video("assets/mexico.mp4")
 
-    if st.session_state.current_node_id == "istanbul" and os.path.exists("istanbul.mp4"):
-        st.video("istanbul.mp4")
+    if st.session_state.current_node_id == "istanbul" and os.path.exists("assets/istanbul.mp4"):
+        st.video("assets/istanbul.mp4")
 
-    if st.session_state.current_node_id == "new_orleans" and os.path.exists("jazz.m4a"):
-        st.audio("jazz.m4a")
+    if st.session_state.current_node_id == "new_orleans" and os.path.exists("assets/jazz.m4a"):
+        st.audio("assets/jazz.m4a")
 
     st.divider()
 
