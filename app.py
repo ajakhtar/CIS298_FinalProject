@@ -9,6 +9,7 @@ st.set_page_config(
     layout="centered"
 )
 
+
 class StoryNode:
     def __init__(self, node_id, data):
         self.id = node_id
@@ -19,121 +20,20 @@ class StoryNode:
         self.ending_type = data.get("ending_type", None)
         self.image = data.get("image", None)
 
+
 def load_story():
     with open("story/nodes.json", "r", encoding="utf-8") as file:
         raw_data = json.load(file)
-
     nodes = {}
     for node_id, data in raw_data.items():
         nodes[node_id] = StoryNode(node_id, data)
     return nodes
 
+
 def get_base64_file(file_path):
     with open(file_path, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-def show_city_scene():
-    city = st.session_state.current_node_id
-    scene = st.session_state.city_scene
-
-    scenes = {
-        "new_orleans": {
-            "main": {
-                "text": "Warm night air wraps around you as jazz spills through the streets.",
-                "choices": {
-                    "Follow the scent of gumbo": "gumbo",
-                    "Follow the trumpet into a jazz club": "jazz",
-                    "Ask why this city matters so much": "talk"
-                }
-            },
-            "gumbo": {
-                "text": "A woman stirs a massive pot with practiced patience. Chef Anthony says, 'Good food takes time. So do people worth knowing.'",
-                "choices": {}
-            },
-            "jazz": {
-                "text": "Inside a crowded club, strangers dance like old friends. Chef Anthony laughs, 'Some people wait for permission to feel alive. Never do that.'",
-                "choices": {}
-            },
-            "talk": {
-                "text": "'This city knows grief,' he says. 'And it still chose music.'",
-                "choices": {}
-            }
-        },
-
-        "tokyo": {
-            "main": {
-                "text": "Neon lights reflect off rain-slick streets as Chef Anthony leads you deeper into Tokyo.",
-                "choices": {
-                    "Follow the smoke to a yakitori stall": "yakitori",
-                    "Try monjayaki on a hot griddle": "monjayaki"
-                }
-            },
-            "yakitori": {
-                "text": "Smoke curls above tiny stools. Chef Anthony says, 'Respect the small places. They often hold the biggest truths.'",
-                "choices": {}
-            },
-            "monjayaki": {
-                "text": "You scrape crispy edges from the grill. Chef Anthony grins, 'Not every masterpiece looks pretty at first.'",
-                "choices": {}
-            }
-        },
-
-        "istanbul": {
-            "main": {
-                "text": "Lanterns glow near the Bosphorus as Chef Anthony leads you through the city’s ancient streets.",
-                "choices": {
-                    "Visit the spice market": "spice",
-                    "Eat by the water": "water"
-                }
-            },
-            "spice": {
-                "text": "The air blooms with saffron, sumac, and tea. 'A city is a recipe,' Chef Anthony says. 'Everything that passed through leaves flavor behind.'",
-                "choices": {}
-            },
-            "water": {
-                "text": "You eat grilled fish as ferries cross the dark water. 'Some places live between worlds,' he says. 'So do people.'",
-                "choices": {}
-            }
-        },
-
-        "mexico_city": {
-            "main": {
-                "text": "The city hums around you as grills crackle and tortillas warm by hand.",
-                "choices": {
-                    "Try tacos from a crowded stand": "tacos",
-                    "Visit the market for mole": "mole"
-                }
-            },
-            "tacos": {
-                "text": "You eat standing on the sidewalk. Chef Anthony says, 'Never confuse simple with ordinary.'",
-                "choices": {}
-            },
-            "mole": {
-                "text": "The mole is deep, smoky, sweet, and bitter. 'Some flavors take generations to explain,' he says.",
-                "choices": {}
-            }
-        }
-    }
-
-    current_scene = scenes[city][scene]
-    st.write(current_scene["text"])
-
-    for button_text, next_scene in current_scene["choices"].items():
-        if st.button(button_text):
-            st.session_state.city_scene = next_scene
-            st.rerun()
-
-    if scene != "main":
-        if st.button("Back to choices"):
-            st.session_state.city_scene = "main"
-            st.rerun()
-
-    if st.button("Return to destinations"):
-        st.session_state.current_node_id = "start"
-        st.session_state.started = False
-        st.session_state.selected_destination = None
-        st.session_state.city_scene = "main"
-        st.rerun()
 
 story_data = load_story()
 
@@ -152,14 +52,14 @@ if "allergy" not in st.session_state:
 if "history" not in st.session_state:
     st.session_state.history = []
 
-if "city_scene" not in st.session_state:
-    st.session_state.city_scene = "main"
 
+# Sidebar — journey history
 if st.session_state.started and st.session_state.history:
     with st.sidebar:
         st.markdown("### 🗺️ Your Journey")
         for i, stop in enumerate(st.session_state.history):
             st.markdown(f"{i + 1}. {stop}")
+
 
 # TITLE SCREEN
 if not st.session_state.started:
@@ -235,26 +135,22 @@ if not st.session_state.started:
         if st.button("Istanbul, Turkey"):
             st.session_state.selected_destination = "istanbul"
             st.session_state.current_node_id = "istanbul"
-            st.session_state.city_scene = "main"
             st.rerun()
 
         if st.button("Tokyo, Japan"):
             st.session_state.selected_destination = "tokyo"
             st.session_state.current_node_id = "tokyo"
-            st.session_state.city_scene = "main"
             st.rerun()
 
     with col2:
         if st.button("New Orleans, USA"):
             st.session_state.selected_destination = "new_orleans"
             st.session_state.current_node_id = "new_orleans"
-            st.session_state.city_scene = "main"
             st.rerun()
 
         if st.button("Mexico City, Mexico"):
             st.session_state.selected_destination = "mexico_city"
             st.session_state.current_node_id = "mexico_city"
-            st.session_state.city_scene = "main"
             st.rerun()
 
     if st.session_state.selected_destination:
@@ -269,6 +165,7 @@ if not st.session_state.started:
             st.session_state.started = True
             st.rerun()
 
+
 # GAME SCREEN
 else:
     current_node = story_data[st.session_state.current_node_id]
@@ -278,6 +175,7 @@ else:
 
     st.title("🍷 No Reservations: The Afterlife Tour")
     st.subheader(current_node.title)
+    st.write(current_node.text)
 
     if st.session_state.allergy and st.session_state.allergy != "No allergies":
         st.caption(f"Chef note: {st.session_state.allergy}")
@@ -301,10 +199,7 @@ else:
 
     st.divider()
 
-    if st.session_state.current_node_id in ["tokyo", "istanbul", "new_orleans", "mexico_city"]:
-        show_city_scene()
-
-    elif current_node.ending:
+    if current_node.ending:
         if current_node.ending_type == "good":
             st.success("🍽️ Another unforgettable meal. The End.")
             st.balloons()
@@ -323,14 +218,10 @@ else:
             st.session_state.selected_destination = None
             st.session_state.allergy = None
             st.session_state.history = []
-            st.session_state.city_scene = "main"
             st.rerun()
-
     else:
-        st.write(current_node.text)
-
         for choice in current_node.choices:
             if st.button(choice["text"]):
+                st.toast(f"'{choice['text']}'", icon="🍴")
                 st.session_state.current_node_id = choice["next"]
-                st.session_state.city_scene = "main"
                 st.rerun()
