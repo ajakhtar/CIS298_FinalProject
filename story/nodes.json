@@ -30,6 +30,10 @@
   "istanbul_water": {
     "title": "By the Water",
     "text": "You eat grilled fish as ferries cross the dark water. \"Some places live between worlds,\" he says. \"So do people.\"",
+    "allergens": ["Seafood"],
+    "allergy_comments": {
+      "Seafood": "Anthony glances at you. \"The fish here is incredible — but we'll make sure the kitchen knows.\""
+    },
     "ending": true,
     "ending_type": "good"
   },
@@ -77,6 +81,11 @@
   "tokyo_monjayaki": {
     "title": "The Griddle",
     "text": "You scrape crispy edges from the hot griddle while the batter sizzles and spreads. Chef Anthony grins. \"Not every masterpiece looks pretty at first.\"",
+    "allergens": ["Dairy", "Gluten"],
+    "allergy_comments": {
+      "Dairy": "Anthony watches the batter spread across the griddle. \"There's butter in there. I should have mentioned that earlier.\"",
+      "Gluten": "Anthony winces. \"Wheat batter on a hot griddle. This one's not for you — but watch it cook. That's still worth something.\""
+    },
     "ending": true,
     "ending_type": "good"
   },
@@ -84,6 +93,10 @@
   "tokyo_sushi": {
     "title": "Twelve Seats, No Menu",
     "text": "The sushi bar is quiet except for the sound of knives and soft greetings. You sit down and let the chef decide your meal. Anthony smiles. \"Trust is part of the experience.\"",
+    "allergens": ["Seafood"],
+    "allergy_comments": {
+      "Seafood": "Anthony raises an eyebrow. \"A seafood-free omakase. Unusual. Let's see what the chef does with it.\""
+    },
     "choices": [
       { "text": "Trust the chef completely", "next": "tokyo_trust" },
       { "text": "Ask too many questions about every bite", "next": "tokyo_questions" }
@@ -93,6 +106,10 @@
   "tokyo_trust": {
     "title": "The Best Seat in the City",
     "text": "Piece after piece arrives with perfect timing. No music, no spectacle, no wasted motion. Anthony looks almost peaceful. \"The world gets loud,\" he says. \"Skill like this doesn't have to.\"",
+    "allergens": ["Seafood"],
+    "allergy_comments": {
+      "Seafood": "Anthony leans over quietly. \"I let them know. They adjusted. That's what a great kitchen does.\""
+    },
     "ending": true,
     "ending_type": "good"
   },
@@ -100,6 +117,10 @@
   "tokyo_questions": {
     "title": "You Broke the Spell",
     "text": "The chef stays polite, but the room changes. Anthony gives you a look that says you talked your way out of something beautiful.",
+    "allergens": ["Seafood"],
+    "allergy_comments": {
+      "Seafood": "Anthony shakes his head. \"Between the allergy questions and the food questions, the chef has had enough of both.\""
+    },
     "ending": true,
     "ending_type": "bad"
   },
@@ -117,6 +138,11 @@
   "nola_gumbo": {
     "title": "The Gumbo Pot",
     "text": "A woman stirs a massive pot with practiced patience. Chef Anthony leans close. \"Good food takes time. So do people worth knowing.\"",
+    "allergens": ["Seafood", "Gluten"],
+    "allergy_comments": {
+      "Seafood": "Anthony pauses. \"Traditional gumbo has shrimp. She's making you a version without. Don't take that lightly.\"",
+      "Gluten": "Anthony watches the pot. \"The roux is the soul of gumbo — and unfortunately, that's flour. She's working around it for you.\""
+    },
     "ending": true,
     "ending_type": "good"
   },
@@ -148,6 +174,10 @@
   "mexico_tacos": {
     "title": "Standing Room Only",
     "text": "You eat standing on the sidewalk, grease on your hands and no regrets. Chef Anthony says, \"Never confuse simple with ordinary.\"",
+    "allergens": ["Gluten"],
+    "allergy_comments": {
+      "Gluten": "Anthony squints. \"Corn tortillas. You're fine. If they'd handed you flour, I would have said something.\""
+    },
     "ending": true,
     "ending_type": "good"
   },
@@ -155,6 +185,10 @@
   "mexico_mole": {
     "title": "The Mole",
     "text": "The mole is deep, smoky, sweet, and bitter all at once. \"Some flavors take generations to explain,\" he says. You don't try to explain it. You just finish the plate.",
+    "allergens": ["Nuts"],
+    "allergy_comments": {
+      "Nuts": "Anthony tilts his head. \"Some moles lean on almonds or peanuts. This one doesn't. You got lucky.\""
+    },
     "ending": true,
     "ending_type": "good"
   },
@@ -162,6 +196,11 @@
   "mexico_churros": {
     "title": "Sugar at Midnight",
     "text": "The chocolate is thick, the churros are still hot, and the whole table goes quiet for a second. Anthony nods. \"Dessert isn't an afterthought in a city that knows how to live.\"",
+    "allergens": ["Dairy", "Gluten"],
+    "allergy_comments": {
+      "Dairy": "Anthony winces slightly. \"The chocolate dipping sauce. We'll get you something on the side.\"",
+      "Gluten": "Anthony gives you a look. \"Churros. You know what churros are made of. We'll find you something else on this table.\""
+    },
     "choices": [
       { "text": "Ask him what travel is really for", "next": "mexico_travel" },
       { "text": "Order one more plate even though you're full", "next": "mexico_full" }
