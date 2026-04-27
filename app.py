@@ -279,10 +279,16 @@ else:
     allergies = st.session_state.allergies
 
     backgrounds = {
-        "istanbul":    ("assets/istanbul_main_background.jpg",    "62% 15%"),
-        "tokyo":       ("assets/tokyo_main_background.jpg",       "center center"),
-        "new_orleans": ("assets/new_orleans_main_background.jpg", "center 30%"),
-        "mexico_city": ("assets/mexico_city_main_background.jpg", "center center"),
+        "istanbul":      ("assets/istanbul_main_background.jpg",    "62% 15%"),
+        "istanbul_water":("assets/Istanbul_Ferry.jpg",              "center center"),
+        "tokyo":         ("assets/tokyo_main_background.jpg",       "center center"),
+        "tokyo_yakitori":("assets/Tokyo_Yakitori.jpg",              "center center"),
+        "tokyo_sushi":   ("assets/tokyo_sushi_bar.jpg",             "center center"),
+        "new_orleans":   ("assets/new_orleans_main_background.jpg", "center 30%"),
+        "nola_jazz":     ("assets/NOLA_Jazz_Club.jpg",              "center center"),
+        "nola_talk":     ("assets/NOLA_Option3.jpg",                "center center"),
+        "mexico_city":   ("assets/mexico_city_main_background.jpg", "center center"),
+        "mexico_tacos":  ("assets/Mexico_City_Tacos.jpg",           "center center"),
     }
     node_id = st.session_state.current_node_id
     if node_id in backgrounds:
@@ -326,7 +332,13 @@ else:
         st.video("assets/istanbul.mp4")
 
     if st.session_state.current_node_id == "new_orleans" and os.path.exists("assets/jazz.m4a"):
-        st.audio("assets/jazz.m4a")
+        audio_base64 = get_base64_file("assets/jazz.m4a")
+        st.markdown(
+            f'<audio autoplay loop controls style="width:100%">'
+            f'<source src="data:audio/mp4;base64,{audio_base64}" type="audio/mp4">'
+            f'</audio>',
+            unsafe_allow_html=True
+        )
 
     st.divider()
 
