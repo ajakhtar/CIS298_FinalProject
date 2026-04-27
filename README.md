@@ -31,9 +31,9 @@ streamlit run app.py
 
 | Member | Primary Role |
 |--------|-------------|
-| A | App logic, session state, interactions |
-| B | Data structure, story JSON, assets |
-| C | Story writing, UI/CSS design |
+| Abdullah | App logic, session state, interactions |
+| Vanessa | Data structure, story JSON, assets |
+| Mohamed | Story writing, UI/CSS design |
 
 ---
 
