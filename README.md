@@ -27,13 +27,13 @@ streamlit run app.py
 └── README.md
 ```
 
-## Team
+## Team Reviews
 
-| Member | Primary Role |
-|--------|-------------|
-| Abdullah | App logic, session state, interactions |
-| Vanessa | Data structure, story JSON, assets |
-| Mohamed | Story writing, UI/CSS design |
+| Member | Primary Role | Rating |
+|--------|-------------|----------- |
+| Abdullah | App logic, session state, interactions | 10/10 |
+| Vanessa | Data structure, story JSON, assets | 10/10 |
+| Mohamed | Story writing, UI/CSS design | 10/10 |
 
 ---
 
